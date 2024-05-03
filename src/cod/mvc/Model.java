@@ -10,7 +10,7 @@ import java.util.List;
 public class Model{
 
     // List to store all the cars in the parking
-    static List<Coche> parking = new ArrayList<>();
+    public static List<Coche> parking = new ArrayList<>();
 
     /**
      * This method creates a new car and adds it to the parking list.
