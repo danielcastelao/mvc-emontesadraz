@@ -19,6 +19,9 @@ public class Model{
      * @param velocidad The speed of the car.
      */
     public static void crearCoche(String matricula, String modelo, int velocidad){
+        if (velocidad < 0){
+            throw new IllegalArgumentException("La velocidad no puede ser negativa");
+        }
         Coche coche = new Coche(matricula, modelo, velocidad);
         parking.add(coche);
     }
@@ -43,6 +46,9 @@ public class Model{
      * @param velocidad The new speed of the car.
      */
     public static void cambiarVelocidad(String matricula, int velocidad){
+        if (velocidad < 0){
+            throw new IllegalArgumentException("La velocidad no puede ser negativa");
+        }
         Coche coche = getCoche(matricula);
         if (coche != null){
             coche.setVelocidad(velocidad);
@@ -59,6 +65,6 @@ public class Model{
         if (coche != null){
             return coche.getVelocidad();
         }
-        return -1;
+           return -1;
     }
 }

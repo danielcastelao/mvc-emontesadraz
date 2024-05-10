@@ -11,6 +11,17 @@ class ModelTest {
     }
 
     @Test
+    void creatingCarWithNegativeSpeedThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> Model.crearCoche("123ABC", "Model S", -1));
+    }
+
+    @Test
+    void changingSpeedToNegativeThrowsException() {
+        Model.crearCoche("123ABC", "Model S", 100);
+        assertThrows(IllegalArgumentException.class, () -> Model.cambiarVelocidad("123ABC", -200));
+    }
+
+    @Test
     void creatingCarAddsItToParking() {
         Model.crearCoche("123ABC", "Model S", 100);
         assertNotNull(Model.getCoche("123ABC"));
@@ -26,11 +37,6 @@ class ModelTest {
         Model.crearCoche("123ABC", "Model S", 100);
         Model.cambiarVelocidad("123ABC", 200);
         assertEquals(200, Model.getVelocidad("123ABC"));
-    }
-
-    @Test
-    void changingSpeedOfNonExistingCarDoesNotThrow() {
-        assertDoesNotThrow(() -> Model.cambiarVelocidad("123ABC", 200));
     }
 
     @Test
