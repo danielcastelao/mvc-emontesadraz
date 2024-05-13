@@ -1,4 +1,4 @@
-package cod.mvc;
+package com.cod.mvc;
 
 public class View {
     public void muestraVelocidad(String matricula, int velocidad){

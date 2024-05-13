@@ -1,4 +1,4 @@
-package cod.mvc;
+package com.cod.mvc;
 
 public class Controller {
     public static void main(String[] args) {
