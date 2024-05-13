@@ -1,4 +1,4 @@
-package com.cod.mvc;
+package com.cod.mvc.Model;
 
 public class Coche {
     private String matricula;
