@@ -22,7 +22,7 @@ public class Model{
         if (velocidad < 0){
             throw new IllegalArgumentException("La velocidad no puede ser negativa");
         }
-        Coche coche = new Coche(matricula, modelo, velocidad);
+        Coche coche = new Coche(matricula, modelo);
         parking.add(coche);
     }
 
@@ -33,7 +33,7 @@ public class Model{
      */
     public static Coche getCoche (String matricula){
         for (Coche coche : parking){
-            if (coche.getMatricula().equals(matricula)){
+            if (coche.matricula.equals(matricula)){
                 return coche;
             }
         }
@@ -51,7 +51,7 @@ public class Model{
         }
         Coche coche = getCoche(matricula);
         if (coche != null){
-            coche.setVelocidad(velocidad);
+            coche.velocidad = velocidad;
         }
     }
 
@@ -63,7 +63,7 @@ public class Model{
     public static int getVelocidad(String matricula){
         Coche coche = getCoche(matricula);
         if (coche != null){
-            return coche.getVelocidad();
+            return coche.velocidad;
         }
            return -1;
     }

@@ -1,17 +1,22 @@
 package com.cod.mvc.controller;
 
 import com.cod.mvc.Model.Coche;
+import com.cod.mvc.Model.Model;
 
 public class ObsVelocidad implements Observer{
-    /**
-     * This method is called when the observed object is changed.
-     * In this case, it's called when the speed of a car is changed.
-     *
-     * @param coche The car whose speed has been changed.
+    final static int LIMITE = 120;
+    /*
+    * Método que actualiza la velocidad del coche
+    * @param coche Coche
+    * @param model Model
      */
     @Override
-    public void update(Coche coche) {
-
+    public void update(Coche coche, Model model) {
+        // Vemos si se ha pasado el límite de velocidad
+    if (coche.velocidad > LIMITE){
+            model.cambiarVelocidad(coche.matricula,coche.velocidad-10);
+            System.out.println("Bajada velocidad");
+        }
     }
 }
 
