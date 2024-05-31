@@ -1,4 +1,4 @@
-package cod.mvc;
+package com.cod.mvc.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,18 @@ import java.util.List;
  * It maintains a list of cars and provides methods to manipulate and retrieve information about the cars.
  */
 public class Model{
+    private static Model instance = null;
 
+    private Model() {
+        // constructor privado
+    }
+
+    public static Model getInstance() {
+        if (instance == null) {
+            instance = new Model();
+        }
+        return instance;
+    }
     // List to store all the cars in the parking
     public static List<Coche> parking = new ArrayList<>();
 
@@ -22,7 +33,7 @@ public class Model{
         if (velocidad < 0){
             throw new IllegalArgumentException("La velocidad no puede ser negativa");
         }
-        Coche coche = new Coche(matricula, modelo, velocidad);
+        Coche coche = new Coche(matricula, modelo);
         parking.add(coche);
     }
 
@@ -33,7 +44,7 @@ public class Model{
      */
     public static Coche getCoche (String matricula){
         for (Coche coche : parking){
-            if (coche.getMatricula().equals(matricula)){
+            if (coche.matricula.equals(matricula)){
                 return coche;
             }
         }
@@ -51,7 +62,7 @@ public class Model{
         }
         Coche coche = getCoche(matricula);
         if (coche != null){
-            coche.setVelocidad(velocidad);
+            coche.velocidad = velocidad;
         }
     }
 
@@ -63,8 +74,22 @@ public class Model{
     public static int getVelocidad(String matricula){
         Coche coche = getCoche(matricula);
         if (coche != null){
-            return coche.getVelocidad();
+            return coche.velocidad;
         }
            return -1;
+    }
+
+    /**
+     * This method retrieves the model of a car.
+     * @param matricula
+     * @return
+     */
+    public static Coche buscarMatricula(String matricula){
+        for (Coche coche : parking){
+            if (coche.matricula.equals(matricula)){
+                return coche;
+            }
+        }
+        return null;
     }
 }

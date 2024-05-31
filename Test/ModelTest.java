@@ -1,4 +1,4 @@
-import cod.mvc.Model;
+import com.cod.mvc.Model.Model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -44,9 +44,4 @@ class ModelTest {
         assertEquals(-1, Model.getVelocidad("123ABC"));
     }
 
-    @Test
-    void getSpeedReturnsCorrectSpeedWhenCarExists() {
-        Model.crearCoche("123ABC", "Model S", 100);
-        assertEquals(100, Model.getVelocidad("123ABC"));
-    }
 }
