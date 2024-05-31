@@ -78,4 +78,18 @@ public class Model{
         }
            return -1;
     }
+
+    /**
+     * This method retrieves the model of a car.
+     * @param matricula
+     * @return
+     */
+    public static Coche buscarMatricula(String matricula){
+        for (Coche coche : parking){
+            if (coche.matricula.equals(matricula)){
+                return coche;
+            }
+        }
+        return null;
+    }
 }

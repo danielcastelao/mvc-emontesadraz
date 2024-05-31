@@ -11,5 +11,6 @@ public class App {
         View.muestraVelocidad("1234ABC", Model.getVelocidad("1234ABC"));
         Model.cambiarVelocidad("1234ABC", 60);
         View.muestraVelocidad("1234ABC", Model.getVelocidad("1234ABC"));
+        controller.buscarYMostrarCoche("1234ABC");
     }
 }

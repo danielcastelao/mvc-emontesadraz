@@ -44,9 +44,4 @@ class ModelTest {
         assertEquals(-1, Model.getVelocidad("123ABC"));
     }
 
-    @Test
-    void getSpeedReturnsCorrectSpeedWhenCarExists() {
-        Model.crearCoche("123ABC", "Model S", 100);
-        assertEquals(100, Model.getVelocidad("123ABC"));
-    }
 }

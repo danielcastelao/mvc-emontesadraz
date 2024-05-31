@@ -82,6 +82,7 @@ sequenceDiagram
 ```
 
 ### Examen 3
+## Primera Parte
 
 Editamos la clase Model para añadir un Singleton. Lo que vamos a hacer es que el constructor sea privado y añadir un método estático que devuelva la instancia de la clase. 
 
@@ -104,3 +105,43 @@ public class Model {
 }
 ```
 Todo esto lo hacemos en una rama nueva llamada "examen3".
+
+## Segunda Parte
+Aqui vamos a añadir a Model un método para buscar un coche por su matricula. 
+
+```java
+ public static Coche buscarMatricula(String matricula){
+    for (Coche coche : parking){
+        if (coche.matricula.equals(matricula)){
+            return coche;
+        }
+    }
+    return null;
+}
+```
+Este método lo vamos a implementar en la clase Controller.
+
+Luego tendremos que implementarlo a otras clases distintas. Por ejemplo en controller:
+
+```java
+public void buscarYMostrarCoche(String matricula) {
+        Coche coche = Model.getInstance().buscarMatricula(matricula);
+        View.mostrarCoche(coche);
+    }
+```
+Aqui lo que hacemos es buscar el coche por su matricula y luego mostrarlo.
+
+Luego lo implementamos en la clase View:
+
+```java
+public static void mostrarCoche(Coche coche) {
+    if (coche != null) {
+        System.out.println("Matrícula: " + coche.matricula);
+        System.out.println("Modelo: " + coche.modelo);
+        System.out.println("Velocidad: " + coche.velocidad);
+    } else {
+        System.out.println("No se encontró el coche.");
+    }
+}
+```
+Por último, lo implementamos en la clase App.
