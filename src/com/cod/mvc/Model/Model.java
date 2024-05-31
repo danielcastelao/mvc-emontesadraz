@@ -8,7 +8,18 @@ import java.util.List;
  * It maintains a list of cars and provides methods to manipulate and retrieve information about the cars.
  */
 public class Model{
+    private static Model instance = null;
 
+    private Model() {
+        // constructor privado
+    }
+
+    public static Model getInstance() {
+        if (instance == null) {
+            instance = new Model();
+        }
+        return instance;
+    }
     // List to store all the cars in the parking
     public static List<Coche> parking = new ArrayList<>();
 

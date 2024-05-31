@@ -80,3 +80,27 @@ sequenceDiagram
     View-->>Controller: boolean
     deactivate View
 ```
+
+### Examen 3
+
+Editamos la clase Model para añadir un Singleton. Lo que vamos a hacer es que el constructor sea privado y añadir un método estático que devuelva la instancia de la clase. 
+
+```java
+public class Model {
+    private static Model instance = null;
+    private ArrayList<Coche> parking;
+
+    private Model() {
+        parking = new ArrayList<>();
+    }
+
+    public static Model getInstance() {
+        if (instance == null) {
+            instance = new Model();
+        }
+        return instance;
+    }
+    
+}
+```
+Todo esto lo hacemos en una rama nueva llamada "examen3".

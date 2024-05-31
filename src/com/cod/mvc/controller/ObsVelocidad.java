@@ -14,7 +14,7 @@ public class ObsVelocidad implements Observer{
     public void update(Coche coche, Model model) {
         // Vemos si se ha pasado el límite de velocidad
     if (coche.velocidad > LIMITE){
-            model.cambiarVelocidad(coche.matricula,coche.velocidad-10);
+            Model.getInstance().cambiarVelocidad(coche.matricula,coche.velocidad-10);
             System.out.println("Bajada velocidad");
         }
     }
