@@ -3,6 +3,9 @@ package com.cod.mvc.controller;
 import com.cod.mvc.Model.Coche;
 import com.cod.mvc.Model.Model;
 
+/**
+ * Esta clase representa un observador en el patrón observador.
+ */
 public class ObsVelocidad implements Observer{
     final static int LIMITE = 120;
     /*
@@ -11,10 +14,10 @@ public class ObsVelocidad implements Observer{
     * @param model Model
      */
     @Override
-    public void update(Coche coche, Model model) {
+    public void update(String matricula, int velocidad) {
         // Vemos si se ha pasado el límite de velocidad
-    if (coche.velocidad > LIMITE){
-            Model.getInstance().cambiarVelocidad(coche.matricula,coche.velocidad-10);
+    if (velocidad > LIMITE){
+            Model.getInstance().cambiarVelocidad(matricula,velocidad-10);
             System.out.println("Bajada velocidad");
         }
     }

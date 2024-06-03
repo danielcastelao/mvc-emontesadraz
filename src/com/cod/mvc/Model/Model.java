@@ -1,22 +1,46 @@
 package com.cod.mvc.Model;
 
+import com.cod.mvc.controller.Observer;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.cod.mvc.Model.Observable.observers;
 
 /**
  * This class represents a model for a parking system.
  * It maintains a list of cars and provides methods to manipulate and retrieve information about the cars.
  */
-public class Model{
+public abstract class Model implements Observable{
     private static Model instance = null;
 
     private Model() {
         // constructor privado
     }
 
+    /**
+     * Este método devuelve una instancia de la clase Model.
+     * Si no existe una instancia previa, crea una nueva.
+     * @return La instancia de la clase Model.
+     */
     public static Model getInstance() {
         if (instance == null) {
-            instance = new Model();
+            instance = new Model() {
+                @Override
+                public void addObserver(Observer observer) {
+
+                }
+
+                @Override
+                public void removeObserver(Observer observer) {
+
+                }
+
+                @Override
+                public void notifyObservers(Coche coche) {
+
+                }
+            };
         }
         return instance;
     }
@@ -50,6 +74,35 @@ public class Model{
         }
         return null;
     }
+
+    /**
+     * Este método sube la velocidad de un coche.
+     * @param matricula
+     * @param v
+     */
+    public static void subirVelocidad(String matricula, int v){
+        Coche coche = getCoche(matricula);
+        if (coche != null){
+            coche.subirVelocidad(v);
+        }
+        System.out.println("La velocidad del coche " + matricula + " ha subido a: " + coche.velocidad + " Km/h");
+    }
+
+
+    /**
+     * Este método baja la velocidad de un coche.
+     * @param matricula
+     * @param v
+     */
+    public static void bajarVelocidad(String matricula, int v){
+        Coche coche = getCoche(matricula);
+        if (coche != null){
+            coche.bajarVelocidad(v);
+        }
+        System.out.println("La velocidad del coche " + matricula + " ha bajado a: " + coche.velocidad + " Km/h");
+    }
+
+
 
     /**
      * This method changes the speed of a car.
