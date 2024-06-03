@@ -1,4 +1,4 @@
-import cod.mvc.Model;
+import com.cod.mvc.Model.Model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,9 +16,23 @@ class ModelTest {
     }
 
     @Test
-    void changingSpeedToNegativeThrowsException() {
+    void increasingSpeedOfExistingCarUpdatesSpeed() {
         Model.crearCoche("123ABC", "Model S", 100);
-        assertThrows(IllegalArgumentException.class, () -> Model.cambiarVelocidad("123ABC", -200));
+        Model.subirVelocidad("123ABC", 50);
+        assertEquals(50, Model.getVelocidad("123ABC"));
+    }
+
+   @Test
+void decreasingSpeedOfExistingCarUpdatesSpeed() {
+    Model.crearCoche("123ABC", "Model S", 100);
+    Model.bajarVelocidad("123ABC", 0);
+    assertEquals(0, Model.getVelocidad("123ABC"));
+}
+
+    @Test
+    void decreasingSpeedBelowZeroThrowsException() {
+        Model.crearCoche("123ABC", "Model S", 100);
+        assertThrows(IllegalArgumentException.class, () -> Model.bajarVelocidad("123ABC", 200));
     }
 
     @Test
@@ -33,20 +47,8 @@ class ModelTest {
     }
 
     @Test
-    void changingSpeedOfExistingCarUpdatesSpeed() {
-        Model.crearCoche("123ABC", "Model S", 100);
-        Model.cambiarVelocidad("123ABC", 200);
-        assertEquals(200, Model.getVelocidad("123ABC"));
-    }
-
-    @Test
     void getSpeedReturnsMinusOneWhenCarDoesNotExist() {
         assertEquals(-1, Model.getVelocidad("123ABC"));
     }
 
-    @Test
-    void getSpeedReturnsCorrectSpeedWhenCarExists() {
-        Model.crearCoche("123ABC", "Model S", 100);
-        assertEquals(100, Model.getVelocidad("123ABC"));
-    }
 }

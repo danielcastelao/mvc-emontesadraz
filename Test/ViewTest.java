@@ -1,4 +1,4 @@
-import cod.mvc.View;
+import com.cod.mvc.View.View;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,6 +25,12 @@ class ViewTest {
     void muestraVelocidadDisplaysCorrectMessage() {
         view.muestraVelocidad("123ABC", 100);
         assertTrue(bos.toString().contains("La velocidad del coche 123ABC es de: 100 Km/h"));
+    }
+
+    @Test
+    void muestraVelocidadInicialDisplaysCorrectMessage() {
+        view.muestraVelocidadInicial("123ABC", 0);
+        assertTrue(bos.toString().contains("La velocidad inicial del coche 123ABC es de: 0 Km/h"));
     }
 
     @AfterEach
