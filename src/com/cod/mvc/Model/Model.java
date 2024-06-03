@@ -117,6 +117,7 @@ public abstract class Model implements Observable{
         if (coche != null){
             coche.velocidad = velocidad;
         }
+        System.out.println("La velocidad del coche " + matricula + " ha cambiado a: " + coche.velocidad + " Km/h");
     }
 
     /**

@@ -27,6 +27,12 @@ class ViewTest {
         assertTrue(bos.toString().contains("La velocidad del coche 123ABC es de: 100 Km/h"));
     }
 
+    @Test
+    void muestraVelocidadInicialDisplaysCorrectMessage() {
+        view.muestraVelocidadInicial("123ABC", 0);
+        assertTrue(bos.toString().contains("La velocidad inicial del coche 123ABC es de: 0 Km/h"));
+    }
+
     @AfterEach
     void tearDown() {
         System.setOut(originalOut);

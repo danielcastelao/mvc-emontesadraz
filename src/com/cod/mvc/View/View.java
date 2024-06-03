@@ -13,8 +13,13 @@ public class View {
         System.out.println("La velocidad final del coche " + matricula + " es de: " + velocidad + " Km/h");
     }
 
+    public static void muestraVelocidadInicial(String matricula, int velocidad) {
+        System.out.println("La velocidad inicial del coche " + matricula + " es de: " + velocidad + " Km/h");
+    }
+
     /**
      * Método que muestra el coche
+     *
      * @param coche Coche
      */
 
